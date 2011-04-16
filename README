@@ -1,1 +1,7 @@
-Please pleace it in AOSP or Cyanogenmod dir.
+Please please it in AOSP or Cyanogenmod dir.
+If you want to build it.
+cp -r device/ /path/to/your/android/source/
+cd /path/to/your/android/source/
+. build/envsetup.sh
+lunch full_callisto-eng
+make -j 4
