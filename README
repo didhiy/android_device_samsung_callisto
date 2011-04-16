@@ -4,4 +4,4 @@ cp -r device/ /path/to/your/android/source/
 cd /path/to/your/android/source/
 . build/envsetup.sh
 lunch full_callisto-eng
-make -j 4
+make -j 8
