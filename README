@@ -5,3 +5,4 @@ cd /path/to/your/android/source/
 . build/envsetup.sh
 lunch full_callisto-eng
 make -j 8
+From GT-I5510_Platfrom works only ar600*( wifi driver) with android gingerbread. 
