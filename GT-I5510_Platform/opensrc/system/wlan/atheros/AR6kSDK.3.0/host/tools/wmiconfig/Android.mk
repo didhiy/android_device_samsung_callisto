@@ -30,6 +30,8 @@ LOCAL_C_INCLUDES := \
 LOCAL_CFLAGS+=-DUSER_KEYS
 LOCAL_SRC_FILES:= wmiconfig.c
 LOCAL_MODULE := wmiconfig
+#gingerbread fix
+LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_EXECUTABLE)
 
