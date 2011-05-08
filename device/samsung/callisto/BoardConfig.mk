@@ -1,5 +1,6 @@
 USE_CAMERA_STUB := true
 
+
 # inherit from the proprietary version
 -include vendor/samsung/callisto/BoardConfigVendor.mk
 
@@ -10,7 +11,7 @@ TARGET_BOOTLOADER_BOARD_NAME := callisto
 
 BOARD_KERNEL_CMDLINE := 
 BOARD_KERNEL_BASE := 0x13600000
-BOARD_PAGE_SIZE := 0x00001000
+BOARD_PAGE_SIZE := 0x00000800
 
 
 #Audio 
