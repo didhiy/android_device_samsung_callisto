@@ -20,19 +20,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES := \
 	device/samsung/callisto/configs/egl.cfg:system/lib/egl/egl.cfg
 
-# Add LDPI assets, in addition to MDPI
-PRODUCT_LOCALES += ldpi mdpi
-
-# Extra overlay for LDPI
-PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/ldpi
-
-# Broadcom FM radio
-$(call inherit-product, vendor/cyanogen/products/bcm_fm_radio.mk)
-
-# Copy bootanimation
-PRODUCT_COPY_FILES += \
-    vendor/cyanogen/prebuilt/ldpi/media/bootanimation.zip:system/media/bootanimation.zip
-
 
 PRODUCT_PACKAGES += \
     LiveWallpapers \
