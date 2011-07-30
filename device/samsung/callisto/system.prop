@@ -9,6 +9,9 @@ ro.ril.hsxpa=2
 ro.ril.gprsclass=10
 
 # RIL
+ro.telephony.call_ring.multiple=false
+ro.telephony.sends_barcount=1
+ro.telephony.ril_class=samsung
 rild.libpath=/system/lib/libsec-ril.so
 rild.libargs=-d /dev/smd0
 persist.rild.nitz_plmn=
@@ -23,4 +26,4 @@ persist.rild.nitz_short_ons_3=
 
 # WiFi
 wifi.interface=wlan0
-wifi.supplicant_scan_interval=120
+wifi.supplicant_scan_interval=45

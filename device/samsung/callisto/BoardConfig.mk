@@ -1,5 +1,7 @@
-USE_CAMERA_STUB := true
+USE_CAMERA_STUB := false
 
+# Fake building with froyo cam, as old libcam is not here yet
+BOARD_USE_FROYO_LIBCAMERA := true
 
 # inherit from the proprietary version
 -include vendor/samsung/callisto/BoardConfigVendor.mk
@@ -13,26 +15,51 @@ TARGET_BOARD_PLATFORM := msm7k
 TARGET_NO_RECOVERY := true
 TARGET_NO_KERNEL := true
 
+TARGET_BOOTLOADER_BOARD_NAME := callisto
+
+TARGET_OTA_ASSERT_DEVICE := callisto
+BOARD_HAS_DOWNLOAD_MODE := true
+BOARD_LDPI_RECOVERY := true
+
+
+
+
+BOARD_BML_BOOT := /dev/block/bml9
+BOARD_BML_RECOVERY := /dev/block/bml10
+
+#cat /proc/LinuStoreIII/bmlinfo 
+#FSR VERSION: FSR_1.2.1p1_b139_RTM
+#minor       position           size     units       id
+#   1: 0x00000000-0x00180000 0x00180000      6        1
+#   2: 0x00180000-0x00200000 0x00080000      2        2
+#   3: 0x00200000-0x002c0000 0x000c0000      3        3
+#   4: 0x002c0000-0x01bc0000 0x01900000    100        4
+#   5: 0x01bc0000-0x03400000 0x01840000     97       23
+#   6: 0x03400000-0x03900000 0x00500000     20       25
+#   7: 0x03900000-0x05200000 0x01900000    100        5
+#   8: 0x05200000-0x05400000 0x00200000      8        6
+#   9: 0x05400000-0x05e00000 0x00a00000     40        7
+#  10: 0x05e00000-0x06800000 0x00a00000     40        8
+#  11: 0x06800000-0x068c0000 0x000c0000      3        9
+#  12: 0x068c0000-0x12800000 0x0bf40000    765       21
+#  13: 0x12800000-0x1dc00000 0x0b400000    720       22
+#  14: 0x1dc00000-0x1f500000 0x01900000    100       24
+
+
 
 # 3G
 BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
 
-
 # WiFi
 PRODUCT_WIRELESS_TOOLS      := true
-WPA_SUPPLICANT_VERSION      := VER_0_6_X
-BOARD_WPA_SUPPLICANT_DRIVER := WEXT
+WPA_SUPPLICANT_VERSION      := VER_0_5_X
+BOARD_WPA_SUPPLICANT_DRIVER := AWEXT
 BOARD_WLAN_DEVICE           := ar6000
 WIFI_DRIVER_MODULE_PATH     := "/system/wifi/ar6000.ko"
 #WIFI_DRIVER_MODULE_PATH     := rfkill
 WIFI_DRIVER_MODULE_ARG      := ""
 WIFI_DRIVER_MODULE_NAME     := ar6000
  
-
- 
-
-
-TARGET_PROVIDES_LIBRIL := true
 
 #Audio 
 HAVE_HTC_AUDIO_DRIVER := true
@@ -50,25 +77,46 @@ BRCM_BTL_OBEX_USE_DBUS := true
 # GPU
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
+# GPS
+BOARD_USES_QCOM_GPS := true
+BOARD_USES_QCOM_LIBRPC := true
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := callisto
+BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
+
+
 # JIT / Optimizations
 WITH_DEXPREOPT := true
 JS_ENGINE := v8
 
 
 
-# Radio FM
-@BOARD_HAVE_FM_RADIO := true
-@BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
-# Should be bcm2049, but hardware is not yet supported
-#BOARD_FM_DEVICE := bcm4325
+# FM Radio
+BOARD_HAVE_FM_RADIO := true
+BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
+# Should be bcm2049 but hardware is not yet supported
+BOARD_FM_DEVICE := bcm4325
 #BOARD_USE_BROADCOM_FM_VOLUME_HACK := true
+
+
+TARGET_PROVIDES_LIBAUDIO := true 
 
 
 # Screencap to capture frame buffer for ddms
 BOARD_USE_SCREENCAP := true
 
+# Sensors
+TARGET_USES_OLD_LIBSENSORS_HAL:=true
+
+BOARD_USES_QCOM_HARDWARE := true
+BOARD_USES_QCOM_LIBS := true
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+
 # USB
+BOARD_CUSTOM_USB_CONTROLLER := ../../device/samsung/callisto/UsbController.cpp
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun"
+BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
 
 # fix this up by examining /proc/mtd on a running device
 #BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00380000

@@ -36,6 +36,8 @@ $(call inherit-product, vendor/cyanogen/products/bcm_fm_radio.mk)
 PRODUCT_COPY_FILES += \
     vendor/cyanogen/prebuilt/ldpi/media/bootanimation.zip:system/media/bootanimation.zip
 
+#BUILD DIR!!!!!!!!!!
+
 
 PRODUCT_PACKAGES += \
     rzscontrol \
@@ -45,6 +47,7 @@ PRODUCT_PACKAGES += \
     MagicSmokeWallpapers \
     VisualizationWallpapers \
     librs_jni \
+    brcm_patchram_plus \
     Gallery3d \
     SpareParts \
     Development \
@@ -109,13 +112,13 @@ PRODUCT_COPY_FILES += \
 
 # Kernel modules
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxy5/files/root/lib/modules/fsr.ko:root/lib/modules/fsr.ko \
-    device/samsung/galaxy5/files/root/lib/modules/fsr_stl.ko:root/lib/modules/fsr_stl.ko \
-    device/samsung/galaxy5/files/root/lib/modules/rfs_fat.ko:root/lib/modules/rfs_fat.ko \
-    device/samsung/galaxy5/files/root/lib/modules/rfs_glue.ko:root/lib/modules/rfs_glue.ko \
-    device/samsung/galaxy5/files/root/lib/modules/acc_cal_param.ko:root/lib/modules/acc_cal_param.ko \
-    device/samsung/galaxy5/files/root/lib/modules/sec_param.ko:root/lib/modules/sec_param.ko \
-    device/samsung/galaxy5/files/root/lib/modules/cifs.ko:system/lib/modules/cifs.ko
+    device/samsung/callisto/files/root/lib/modules/fsr.ko:root/lib/modules/fsr.ko \
+    device/samsung/callisto/files/root/lib/modules/fsr_stl.ko:root/lib/modules/fsr_stl.ko \
+    device/samsung/callisto/files/root/lib/modules/rfs_fat.ko:root/lib/modules/rfs_fat.ko \
+    device/samsung/callisto/files/root/lib/modules/rfs_glue.ko:root/lib/modules/rfs_glue.ko \
+    device/samsung/callisto/files/root/lib/modules/acc_cal_param.ko:root/lib/modules/acc_cal_param.ko \
+    device/samsung/callisto/files/root/lib/modules/sec_param.ko:root/lib/modules/sec_param.ko \
+    device/samsung/callisto/files/root/lib/modules/cifs.ko:system/lib/modules/cifs.ko
 
 # Keymaps
 PRODUCT_COPY_FILES += \
@@ -205,10 +208,12 @@ PRODUCT_COPY_FILES += \
     device/samsung/callisto/files/etc/wifi/hostapd.conf:system/etc/wifi/hostapd.conf \
     device/samsung/callisto/files/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/samsung/callisto/files/etc/dhcpd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
-
+#This update
 
 
 $(call inherit-product, build/target/product/full.mk)
+
+$(call inherit-product, vendor/cyanogen/products/gsm.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_callisto
