@@ -1,5 +1,8 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
+# Inherit some common cyanogenmod stuff.
+$(call inherit-product, vendor/cyanogen/products/common_full.mk)
+
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
@@ -35,6 +38,7 @@ PRODUCT_COPY_FILES += \
 
 
 PRODUCT_PACKAGES += \
+    rzscontrol \
     LiveWallpapers \
     LiveWallpapersPicker \
     VisualizationWallpapers \
@@ -87,9 +91,31 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/callisto/proprietary/lib/libmmipl.so:system/lib/libmmipl.so \
     vendor/samsung/callisto/proprietary/lib/libmmjpeg.so:system/lib/libmmjpeg.so
 
+
 # Gralloc Fix screen issue
 PRODUCT_COPY_FILES += \
     vendor/samsung/callisto/proprietary/lib/hw/gralloc.msm7k.so:system/lib/hw/gralloc.msm7k.so
+
+#Specific init.d
+PRODUCT_COPY_FILES += \
+    device/samsung/callisto/files/etc/init.d/00banner:system/etc/init.d/00banner
+    device/samsung/callisto/files/etc/init.d/01sysctl:system/etc/init.d/01sysctl
+    device/samsung/callisto/files/etc/init.d/02callisto:system/etc/init.d/02callisto
+    device/samsung/callisto/files/etc/init.d/03firstboot:system/etc/init.d/03firstboot
+    device/samsung/callisto/files/etc/init.d/04modules:system/etc/init.d/04modules
+    device/samsung/callisto/files/etc/init.d/05mountsd:system/etc/init.d/05mountsd
+    device/samsung/callisto/files/etc/init.d/06mountdl:system/etc/init.d/06mountdl
+    device/samsung/callisto/files/etc/init.d/20userinit:system/etc/init.d/20userinit
+
+# Kernel modules
+PRODUCT_COPY_FILES += \
+    device/samsung/galaxy5/files/root/lib/modules/fsr.ko:root/lib/modules/fsr.ko \
+    device/samsung/galaxy5/files/root/lib/modules/fsr_stl.ko:root/lib/modules/fsr_stl.ko \
+    device/samsung/galaxy5/files/root/lib/modules/rfs_fat.ko:root/lib/modules/rfs_fat.ko \
+    device/samsung/galaxy5/files/root/lib/modules/rfs_glue.ko:root/lib/modules/rfs_glue.ko \
+    device/samsung/galaxy5/files/root/lib/modules/acc_cal_param.ko:root/lib/modules/acc_cal_param.ko \
+    device/samsung/galaxy5/files/root/lib/modules/sec_param.ko:root/lib/modules/sec_param.ko \
+    device/samsung/galaxy5/files/root/lib/modules/cifs.ko:system/lib/modules/cifs.ko
 
 # Keymaps
 PRODUCT_COPY_FILES += \
@@ -108,23 +134,30 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # OMX libraries
 PRODUCT_COPY_FILES += \
-    device/samsung/callisto/proprietary/lib/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \
-    device/samsung/callisto/proprietary/lib/libOmxAacDec.so:system/lib/libOmxAacDec.so \
-    device/samsung/callisto/proprietary/lib/libOmxAmrRtpDec.so:system/lib/libOmxAmrRtpDec.so \
-    device/samsung/callisto/proprietary/lib/libOmxH264Dec.so:system/lib/libOmxH264Dec.so \
-    device/samsung/callisto/proprietary/lib/libOmxQcelpDec.so:system/lib/libOmxQcelpDec.so \
-    device/samsung/callisto/proprietary/lib/libOmxAacEnc.so:system/lib/libOmxAacEnc.so \
-    device/samsung/callisto/proprietary/lib/libOmxAmrwbDec.so:system/lib/libOmxAmrwbDec.so \
-    device/samsung/callisto/proprietary/lib/libOmxMp3Dec.so:system/lib/libOmxMp3Dec.so \
-    device/samsung/callisto/proprietary/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \
-    device/samsung/callisto/proprietary/lib/libOmxAmrDec.so:system/lib/libOmxAmrDec.so \
-    device/samsung/callisto/proprietary/lib/libOmxEvrcDec.so:system/lib/libOmxEvrcDec.so \
-    device/samsung/callisto/proprietary/lib/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \
-    device/samsung/callisto/proprietary/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
-    device/samsung/callisto/proprietary/lib/libOmxAmrEnc.so:system/lib/libOmxAmrEnc.so \
-    device/samsung/callisto/proprietary/lib/libOmxEvrcEnc.so:system/lib/libOmxEvrcEnc.so \
-    device/samsung/callisto/proprietary/lib/libOmxQcelp13Enc.so:system/lib/libOmxQcelp13Enc.so \
-    device/samsung/callisto/proprietary/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so
+    device/samsung/callisto/files/lib/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \
+    device/samsung/callisto/files/lib/libomx_amrenc_sharedlibrary.so:system/lib/libomx_amrenc_sharedlibrary.so \
+    device/samsung/callisto/files/lib/libOmxEvrcEnc.so:system/lib/libOmxEvrcEnc.so \
+    device/samsung/callisto/files/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
+    device/samsung/callisto/files/lib/libOmxH264Dec.so:system/lib/libOmxH264Dec.so \
+    device/samsung/callisto/files/lib/libomx_sharedlibrary.so:system/lib/libomx_sharedlibrary.so \
+    device/samsung/callisto/files/lib/libOmxQcelp13Enc.so:system/lib/libOmxQcelp13Enc.so \
+    device/samsung/callisto/files/lib/libOmxMp3Dec.so:system/lib/libOmxMp3Dec.so \
+    device/samsung/callisto/files/lib/libOmxAacEnc.so:system/lib/libOmxAacEnc.so \
+    device/samsung/callisto/files/lib/libOmxAmrDec.so:system/lib/libOmxAmrDec.so \
+    device/samsung/callisto/files/lib/libOmxAdpcmDec.so:system/lib/libOmxAdpcmDec.so \
+    device/samsung/callisto/files/lib/libomx_m4vdec_sharedlibrary.so:system/lib/libomx_m4vdec_sharedlibrary.so \
+    device/samsung/callisto/files/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so \
+    device/samsung/callisto/files/lib/libomx_amrdec_sharedlibrary.so:system/lib/libomx_amrdec_sharedlibrary.so \
+    device/samsung/callisto/files/lib/libOmxAacDec.so:system/lib/libOmxAacDec.so \
+    device/samsung/callisto/files/lib/libOmxAmrEnc.so:system/lib/libOmxAmrEnc.so \
+    device/samsung/callisto/files/lib/libOmxEvrcDec.so:system/lib/libOmxEvrcDec.so \
+    device/samsung/callisto/files/lib/libOmxAmrRtpDec.so:system/lib/libOmxAmrRtpDec.so \
+    device/samsung/callisto/files/lib/libomx_mp3dec_sharedlibrary.so:system/lib/libomx_mp3dec_sharedlibrary.so \
+    device/samsung/callisto/files/lib/libOmxAmrwbDec.so:system/lib/libOmxAmrwbDec.so \
+    device/samsung/callisto/files/lib/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \
+    device/samsung/callisto/files/lib/libOmxQcelpDec.so:system/lib/libOmxQcelpDec.so \
+    device/samsung/callisto/files/lib/libomx_aacdec_sharedlibrary.so:system/lib/libomx_aacdec_sharedlibrary.so \
+    device/samsung/callisto/files/lib/libomx_avcdec_sharedlibrary.so:system/lib/libomx_avcdec_sharedlibrary.so
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -137,8 +170,11 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml
 
+
 # Samsung RIL
 PRODUCT_COPY_FILES += \
+    vendor/samsung/callisto/proprietary/bin/rild:system/bin/rild \
+    vendor/samsung/callisto/proprietary/lib/libril.so:system/lib/libril.so \
     vendor/samsung/callisto/proprietary/lib/libsec-ril.so:system/lib/libsec-ril.so \
     vendor/samsung/callisto/proprietary/lib/libsecril-client.so:system/lib/libsecril-client.so \
     vendor/samsung/callisto/proprietary/lib/libseccamera.so:system/lib/libseccamera.so \
@@ -160,12 +196,12 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/callisto/proprietary/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin:system/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin \
     vendor/samsung/callisto/proprietary/wifi/ath6k/AR6003/hw2.0/data.patch.bin:system/wifi/ath6k/AR6003/hw2.0/data.patch.bin \
     vendor/samsung/callisto/proprietary/wifi/ath6k/AR6003/hw2.0/otp.bin.z77:system/wifi/ath6k/AR6003/hw2.0/otp.bin.z77 \
+    device/samsung/callisto/files/wifi/ar6000.ko:system/wifi/ar6000.ko \
     vendor/samsung/callisto/proprietary/bin/wlan_tool:system/bin/wlan_tool \
     vendor/samsung/callisto/proprietary/bin/wmiconfig:system/bin/wmiconfig \
     vendor/samsung/callisto/proprietary/bin/hostapd:system/bin/hostapd \
     vendor/samsung/callisto/proprietary/bin/hostapd_cli:system/bin/hostapd_cli \
     vendor/samsung/callisto/proprietary/bin/hostapd_wps:system/bin/hostapd_wps \
-    device/samsung/callisto/files/wifi/ar6000.ko:system/wifi/ar6000.ko \
     device/samsung/callisto/files/etc/wifi/hostapd.conf:system/etc/wifi/hostapd.conf \
     device/samsung/callisto/files/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/samsung/callisto/files/etc/dhcpd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
