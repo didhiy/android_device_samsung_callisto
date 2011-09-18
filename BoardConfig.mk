@@ -29,7 +29,7 @@ BOARD_EGL_CFG := device/samsung/callisto/files/lib/egl/egl.cfg
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 BOARD_USE_SCREENCAP := true
-#BOARD_NO_RGBX_8888 := true
+BOARD_NO_RGBX_8888 := true
 #TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
 
 TARGET_OTA_ASSERT_DEVICE := callisto
