@@ -1,0 +1,10 @@
+#!/system/bin/sh
+
+#Format data
+umount /dev/block/stl13
+/system/bin/busybox mkfs.ext2 /dev/block/stl13
+#Format cache
+umount /dev/block/stl14
+/system/bin/busybox mkfs.ext2 /dev/block/stl14
+
+/system/bin/busybox rm /etc/init.d/01formatanddie

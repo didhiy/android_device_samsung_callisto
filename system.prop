@@ -26,7 +26,7 @@ persist.rild.nitz_short_ons_3=
 
 # WiFi
 wifi.interface=wlan0
-wifi.supplicant_scan_interval=45
+wifi.supplicant_scan_interval=60
 
 # Google
 DEVICE_PROVISIONED=1
@@ -44,13 +44,20 @@ mobiledata.interfaces=pdp0,wlan0,gprs,ppp0
 ro.ril.hsxpa=2
 ro.ril.gprsclass=10
 
+# Key layouts
+hw.keyboards.0.devname=callisto_keypad0
+hw.keyboards.65538.devname=callisto_headset
+android.keylayout.europa_keypad0=/system/usr/keylayout/callisto_keypad3.kl
+android.keylayout.callisto_headset=/system/usr/keylayout/callisto_headset.kl
+android.keychar.callisto_keypad0=/system/usr/keychars/callisto_keypad3.kcm.bin
+
 # Performance settings
 ro.compcache.default=18
 dalvik.vm.dexopt-flags=m=y
 dalvik.vm.execution-mode=int:jit
-dalvik.vm.heapsize=48m
+dalvik.vm.heapsize=24m
 persist.sys.purgeable_assets=1
-persist.sys.use_dithering=1
+persist.sys.use_dithering=0
 
 # JNI debugging
 ro.kernel.android.checkjni=0

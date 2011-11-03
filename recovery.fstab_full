@@ -1,7 +1,9 @@
 # mount		fstype	device			[device2]	[fstype2]	[fsoptions]
 
-/system		ubifs		/dev/ubi0_0
-/data		ubifs		/dev/ubi1_0
-/cache		ubifs		/dev/ubi2_0
-#/efs		ubifs		/dev/ubi3_0
-/sdcard		vfat		/dev/block/mmcblk0p1
+/boot		bml	boot
+/cache		rfs	/dev/block/stl14	NULL		ext4		llw,check=no,nosuid,nodev
+/data		rfs	/dev/block/stl13	NULL		ext4		llw,check=no,nosuid,nodev
+/recovery	bml	recovery
+/sd-ext		ext4	/dev/block/mmcblk0p2
+/sdcard		vfat	/dev/block/mmcblk0p1	/dev/block/mmcblk0
+/system		rfs	/dev/block/stl12	NULL		ext4		llw,check=no

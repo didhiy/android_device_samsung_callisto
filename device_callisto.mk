@@ -28,8 +28,8 @@ PRODUCT_PACKAGES += \
 
 # Boot screen
 #PRODUCT_COPY_FILES += \
-#    device/samsung/callisto/files/root/EUROPA.rle:root/EUROPA.rle \
-#    device/samsung/callisto/files/root/EUROPA.rle:recovery/root/EUROPA.rle
+#    device/samsung/callisto/files/root/CALLISTO.rle:root/CALLISTO.rle \
+#    device/samsung/callisto/files/root/CALLISTO.rle:recovery/root/CALLISTO.rle
 
 # Live wallpaper packages
 PRODUCT_PACKAGES += \
@@ -49,6 +49,7 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.xml:system/etc/permissions/android.hardware.touchscreen.xml
+   # frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
 # Publish that we support the live wallpaper feature.
 PRODUCT_COPY_FILES += \
@@ -74,7 +75,12 @@ PRODUCT_COPY_FILES += \
 	device/samsung/callisto/input/Keymaps/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
 	device/samsung/callisto/input/Keymaps/callisto_headset.kl:system/usr/keylayout/callisto_headset.kl \
 	device/samsung/callisto/input/Keymaps/callisto_keypad3.kl:system/usr/keylayout/callisto_keypad3.kl \
-	device/samsung/callisto/input/Keymaps/qwerty.kl:system/usr/keylayout/qwerty.kl
+	device/samsung/callisto/input/Keymaps/qwerty.kl:system/usr/keylayout/qwerty.kl \
+	device/samsung/callisto/input/Keychars/callisto_keypad3.kcm.bin:system/usr/keychars/callisto_keypad3.kcm.bin \
+	device/samsung/callisto/input/Keychars/callisto_keypad3.kcm.bin:system/usr/keychars/qwerty.kcm.bin. \
+	device/samsung/callisto/input/Keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
+	device/samsung/callisto/input/Keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin.orig
+
 
 # Board-specific init
 PRODUCT_COPY_FILES += \
@@ -115,12 +121,6 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/callisto/proprietary/wifi/ath6k/AR6003/hw2.0/data.patch.bin:system/wifi/ath6k/AR6003/hw2.0/data.patch.bin \
     vendor/samsung/callisto/proprietary/wifi/ath6k/AR6003/hw2.0/otp.bin.z77:system/wifi/ath6k/AR6003/hw2.0/otp.bin.z77 \
     device/samsung/callisto/files/wifi/ar6000.ko:system/wifi/ar6000.ko \
-    device/samsung/callisto/files/bin/dhcpcd:system/bin/dhcpcd \
-    vendor/samsung/callisto/proprietary/bin/wlan_tool:system/bin/wlan_tool \
-    vendor/samsung/callisto/proprietary/bin/wmiconfig:system/bin/wmiconfig \
-    vendor/samsung/callisto/proprietary/bin/hostapd:system/bin/hostapd \
-    vendor/samsung/callisto/proprietary/bin/hostapd_cli:system/bin/hostapd_cli \
-    vendor/samsung/callisto/proprietary/bin/hostapd_wps:system/bin/hostapd_wps \
     device/samsung/callisto/files/etc/wifi/hostapd.conf:system/etc/wifi/hostapd.conf \
     device/samsung/callisto/files/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/samsung/callisto/files/etc/dhcpd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
@@ -210,7 +210,7 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
-            ro.modversion=CyanogenMod-7.1.0-RC1-WILLING
+            ro.modversion=CyanogenMod-7.1.0-WILLING
 
 PRODUCT_NAME := full_callisto
 PRODUCT_BRAND := samsung

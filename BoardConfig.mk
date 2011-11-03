@@ -29,14 +29,9 @@ BOARD_EGL_CFG := device/samsung/callisto/files/lib/egl/egl.cfg
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 BOARD_USE_SCREENCAP := true
-#BOARD_NO_RGBX_8888 := true
+BOARD_NO_RGBX_8888 := true
 #TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
 
-TARGET_OTA_ASSERT_DEVICE := callisto
-BOARD_HAS_DOWNLOAD_MODE := true
-BOARD_LDPI_RECOVERY := true
-#BOARD_HAS_JANKY_BACKBUFFER := true
-#BOARD_USE_GR_FLIP_32 := true
 
 #cat /proc/LinuStoreIII/bmlinfo 
 #FSR VERSION: FSR_1.2.1p1_b139_RTM
@@ -60,7 +55,8 @@ BOARD_LDPI_RECOVERY := true
 BOARD_BML_BOOT := /dev/block/bml9
 BOARD_BML_RECOVERY := /dev/block/bml10
 TARGET_BOOTLOADER_BOARD_NAME := callisto
-TARGET_OTA_ASSERT_DEVICE := callisto
+TARGET_OTA_ASSERT_DEVICE := callisto,GT-I5510
+BOARD_RECOVERY_HANDLES_MOUNT := true
 BOARD_HAS_DOWNLOAD_MODE := true
 BOARD_LDPI_RECOVERY := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
@@ -72,7 +68,7 @@ TARGET_RECOVERY_INITRC := device/samsung/callisto/recovery.rc
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/callisto/recovery/graphics.c
 BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/samsung/callisto/recovery/recovery_ui.c
 TARGET_RECOVERY_PRE_COMMAND := "echo 3 > /proc/sys/vm/drop_caches; sync"
-TARGET_USERIMAGES_USE_EXT4 := true
+#TARGET_USERIMAGES_USE_EXT4 := true
 
 # Audio
 TARGET_PROVIDES_LIBAUDIO := true 
@@ -102,18 +98,13 @@ BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
 
 # WiFi
 PRODUCT_WIRELESS_TOOLS      := true
-WPA_SUPPLICANT_VERSION      := VER_0_5_X
+WPA_SUPPLICANT_VERSION      := VER_0_6_X
 BOARD_WPA_SUPPLICANT_DRIVER := AWEXT
 BOARD_WLAN_DEVICE           := ar6000
 WIFI_DRIVER_MODULE_PATH     := "/system/wifi/ar6000.ko"
 WIFI_DRIVER_MODULE_ARG      := ""
 WIFI_DRIVER_MODULE_NAME     := ar6000
-
-
-#BOARD_WEXT_NO_COMBO_SCAN    := true
-#CONFIG_DRIVER_WEXT          := true
-#WIFI_DRIVER_MODULE_PATH     := rfkill
-
+BOARD_WEXT_NO_COMBO_SCAN    := true
 
 # 3G
 BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
