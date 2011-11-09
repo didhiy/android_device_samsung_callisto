@@ -16,6 +16,7 @@ PRODUCT_PACKAGES += \
     gralloc.callisto \
     copybit.callisto \
     lights.msm7k \
+    setup_fs \
     screencap
 
 # Recovery tools
@@ -28,8 +29,8 @@ PRODUCT_PACKAGES += \
 
 # Boot screen
 #PRODUCT_COPY_FILES += \
-#    device/samsung/callisto/files/root/CALLISTO.rle:root/CALLISTO.rle \
-#    device/samsung/callisto/files/root/CALLISTO.rle:recovery/root/CALLISTO.rle
+    device/samsung/callisto/files/root/CALLISTO.rle:root/CALLISTO.rle \
+    device/samsung/callisto/files/root/CALLISTO.rle:recovery/root/CALLISTO.rle
 
 # Live wallpaper packages
 PRODUCT_PACKAGES += \
@@ -43,13 +44,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/base/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
+    frameworks/base/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/base/data/etc/android.hardware.touchscreen.xml:system/etc/permissions/android.hardware.touchscreen.xml
-   # frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
+    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/base/data/etc/android.hardware.touchscreen.xml:system/etc/permissions/android.hardware.touchscreen.xml \
+    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
 # Publish that we support the live wallpaper feature.
 PRODUCT_COPY_FILES += \
@@ -77,7 +80,7 @@ PRODUCT_COPY_FILES += \
 	device/samsung/callisto/input/Keymaps/callisto_keypad3.kl:system/usr/keylayout/callisto_keypad3.kl \
 	device/samsung/callisto/input/Keymaps/qwerty.kl:system/usr/keylayout/qwerty.kl \
 	device/samsung/callisto/input/Keychars/callisto_keypad3.kcm.bin:system/usr/keychars/callisto_keypad3.kcm.bin \
-	device/samsung/callisto/input/Keychars/callisto_keypad3.kcm.bin:system/usr/keychars/qwerty.kcm.bin. \
+	device/samsung/callisto/input/Keychars/callisto_keypad3.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
 	device/samsung/callisto/input/Keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
 	device/samsung/callisto/input/Keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin.orig
 

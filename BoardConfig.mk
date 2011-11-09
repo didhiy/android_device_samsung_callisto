@@ -16,12 +16,12 @@ TARGET_BOOTLOADER_BOARD_NAME := callisto
 
 # Kernel
 #TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/callisto/recovery_kernel
-TARGET_PREBUILT_KERNEL := device/samsung/callisto/2.6.32
+TARGET_PREBUILT_KERNEL := device/samsung/callisto/kernel
 #BOARD_NAND_PAGE_SIZE := 4096 -s 128
 BOARD_KERNEL_CMDLINE := 
 BOARD_KERNEL_BASE := 0x13600000
-#BOARD_KERNEL_PAGESIZE := 4096
-BOARD_PAGE_SIZE := 0x00001000
+BOARD_KERNEL_PAGESIZE := 00001000
+#BOARD_PAGE_SIZE := 0x00001000
 
 
 # Graphics
@@ -57,6 +57,7 @@ BOARD_BML_RECOVERY := /dev/block/bml10
 TARGET_BOOTLOADER_BOARD_NAME := callisto
 TARGET_OTA_ASSERT_DEVICE := callisto,GT-I5510
 BOARD_RECOVERY_HANDLES_MOUNT := true
+BOARD_SEND_RECOVERY_DONE := true
 BOARD_HAS_DOWNLOAD_MODE := true
 BOARD_LDPI_RECOVERY := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
@@ -68,7 +69,7 @@ TARGET_RECOVERY_INITRC := device/samsung/callisto/recovery.rc
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/callisto/recovery/graphics.c
 BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/samsung/callisto/recovery/recovery_ui.c
 TARGET_RECOVERY_PRE_COMMAND := "echo 3 > /proc/sys/vm/drop_caches; sync"
-#TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_EXT4 := true
 
 # Audio
 TARGET_PROVIDES_LIBAUDIO := true 
@@ -99,7 +100,7 @@ BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
 # WiFi
 PRODUCT_WIRELESS_TOOLS      := true
 WPA_SUPPLICANT_VERSION      := VER_0_6_X
-BOARD_WPA_SUPPLICANT_DRIVER := AWEXT
+BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 BOARD_WLAN_DEVICE           := ar6000
 WIFI_DRIVER_MODULE_PATH     := "/system/wifi/ar6000.ko"
 WIFI_DRIVER_MODULE_ARG      := ""
@@ -111,6 +112,8 @@ BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
 
 # JIT / Optimizations
 WITH_DEXPREOPT := true
+WITH_JIT := true
+ENABLE_JSC_JIT := true
 JS_ENGINE := v8
 
 # FM Radio
