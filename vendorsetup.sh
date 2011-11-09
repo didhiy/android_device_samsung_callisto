@@ -21,3 +21,4 @@
 # function: add_lunch_combo generic-eng
 
 add_lunch_combo cyanogen_callisto-eng
+add_lunch_combo cyanogen_callisto-userdebug

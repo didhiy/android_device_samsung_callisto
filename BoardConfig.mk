@@ -65,9 +65,9 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 200540160
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 188743680
 BOARD_FLASH_BLOCK_SIZE := 4096
-TARGET_RECOVERY_INITRC := device/samsung/callisto/recovery.rc
-BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/callisto/recovery/graphics.c
-BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/samsung/callisto/recovery/recovery_ui.c
+TARGET_RECOVERY_INITRC := device/samsung/callisto/Recovery/recovery.rc
+BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/callisto/Recovery/graphics.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/samsung/callisto/Recovery/recovery_ui.c
 TARGET_RECOVERY_PRE_COMMAND := "echo 3 > /proc/sys/vm/drop_caches; sync"
 TARGET_USERIMAGES_USE_EXT4 := true
 
