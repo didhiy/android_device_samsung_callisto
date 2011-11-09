@@ -110,8 +110,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/callisto/Kernel/lib/modules/fsr.ko:root/lib/modules/fsr.ko \
     device/samsung/callisto/Kernel/lib/modules/fsr_stl.ko:root/lib/modules/fsr_stl.ko \
-    device/samsung/callisto/Kernel/lib/modules/rfs_glue.ko:recovery/root/lib/modules/rfs_glue.ko \
-    device/samsung/callisto/Kernel/lib/modules/rfs_fat.ko:recovery/root/lib/modules/rfs_fat.ko \
     device/samsung/callisto/Kernel/lib/modules/acc_cal_param.ko:system/lib/modules/acc_cal_param.ko \
     device/samsung/callisto/Kernel/lib/modules/sec_param.ko:system/lib/modules/sec_param.ko \
    # device/samsung/callisto/Kernel/lib/modules/zram.ko:system/lib/modules/zram.ko

@@ -15,8 +15,8 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_BOOTLOADER_BOARD_NAME := callisto
 
 # Kernel
-#TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/callisto/recovery_kernel
-TARGET_PREBUILT_KERNEL := device/samsung/callisto/kernel
+#TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/callisto/Recovery/recovery_kernel
+TARGET_PREBUILT_KERNEL := device/samsung/callisto/Kernel/kernel
 #BOARD_NAND_PAGE_SIZE := 4096 -s 128
 BOARD_KERNEL_CMDLINE := 
 BOARD_KERNEL_BASE := 0x13600000

@@ -1,4 +1,4 @@
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),galaxy5)
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),tass)
 
 
 LOCAL_PATH:= $(call my-dir)
