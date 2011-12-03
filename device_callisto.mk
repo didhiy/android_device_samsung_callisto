@@ -45,9 +45,9 @@ DEVICE_PACKAGE_OVERLAYS := device/samsung/callisto/overlays
 
 PRODUCT_PACKAGES += \
     brcm_patchram_plus \
-    copybit.galaxy5 \
-    gps.galaxy5 \
-    gralloc.galaxy5 \
+    copybit.callisto \
+    gps.callisto \
+    gralloc.callisto \
     libOmxCore \
     libOmxVidEnc \
     lights.msm7k \
