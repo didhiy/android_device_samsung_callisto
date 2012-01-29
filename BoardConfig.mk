@@ -1,38 +1,52 @@
+#
+# Copyright (C) 2011 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+# WARNING: This line must come *before* including the proprietary
+# variant, so that it gets overwritten by the parent (which goes
+# against the traditional rules of inheritance).
+USE_CAMERA_STUB := false
+
 # inherit from the proprietary version
 -include vendor/samsung/callisto/BoardConfigVendor.mk
 
 # Camera
-USE_CAMERA_STUB := false
 #BOARD_USE_FROYO_LIBCAMERA := true
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := msm7k
 TARGET_ARCH_VARIANT := armv6-vfp
-TARGET_ARCH_VARIANT_CPU := arm1136jf-s
 TARGET_CPU_ABI := armeabi-v6l
 TARGET_CPU_ABI2 := armeabi
 
-TARGET_BOOTLOADER_BOARD_NAME := callisto
-
 # Kernel
-#TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/callisto/Recovery/recovery_kernel
-TARGET_PREBUILT_KERNEL := device/samsung/callisto/Kernel/kernel
-#BOARD_NAND_PAGE_SIZE := 4096 -s 128
+TARGET_PREBUILT_KERNEL := device/samsung/callisto/prebuilt/kernel
+#TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/callisto/prebuilt/recovery_kernel
+BOARD_NAND_PAGE_SIZE := 4096 -s 128
 BOARD_KERNEL_CMDLINE := 
 BOARD_KERNEL_BASE := 0x13600000
-BOARD_KERNEL_PAGESIZE := 00001000
-#BOARD_PAGE_SIZE := 0x00001000
-
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_PAGE_SIZE := 0x00001000
 
 # Graphics
-BOARD_EGL_CFG := device/samsung/callisto/files/lib/egl/egl.cfg
+BOARD_EGL_CFG := device/samsung/callisto/prebuilt/lib/egl/egl.cfg
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 BOARD_USE_SCREENCAP := true
 #BOARD_NO_RGBX_8888 := true
-#TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
-
 
 #cat /proc/LinuStoreIII/bmlinfo 
 #FSR VERSION: FSR_1.2.1p1_b139_RTM
@@ -58,7 +72,6 @@ BOARD_BML_RECOVERY := /dev/block/bml10
 TARGET_BOOTLOADER_BOARD_NAME := callisto
 TARGET_OTA_ASSERT_DEVICE := callisto,GT-I5510
 BOARD_RECOVERY_HANDLES_MOUNT := true
-BOARD_SEND_RECOVERY_DONE := true
 BOARD_HAS_DOWNLOAD_MODE := true
 BOARD_LDPI_RECOVERY := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
@@ -66,33 +79,31 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 200540160
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 188743680
 BOARD_FLASH_BLOCK_SIZE := 4096
-TARGET_RECOVERY_INITRC := device/samsung/callisto/Recovery/recovery.rc
-BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/callisto/Recovery/graphics.c
-BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/samsung/callisto/Recovery/recovery_ui.c
-TARGET_RECOVERY_PRE_COMMAND := "echo 3 > /proc/sys/vm/drop_caches; sync"
+TARGET_RECOVERY_INITRC := device/samsung/callisto/recovery/recovery.rc
+BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/callisto/recovery/graphics.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/samsung/callisto/recovery/recovery_ui.c
+TARGET_RECOVERY_PRE_COMMAND := "echo 3 > /proc/sys/vm/drop_caches; echo 604800 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq; sync"
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Audio
 TARGET_PROVIDES_LIBAUDIO := true 
 
 # Sensors
-TARGET_USES_OLD_LIBSENSORS_HAL:=true
+#TARGET_USES_OLD_LIBSENSORS_HAL :=true
 
 # QCOM
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
-COPYBIT_MSM7K := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 # GPS
-BOARD_GPS_LIBRARIES := libloc_api
 BOARD_USES_QCOM_GPS := true
 BOARD_USES_QCOM_LIBRPC := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := callisto
-BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 1240
+BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 # USB
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/samsung/callisto/UsbController.cpp
@@ -115,15 +126,10 @@ BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
 
 # JIT / Optimizations
 WITH_DEXPREOPT := true
-WITH_JIT := true
-ENABLE_JSC_JIT := true
 JS_ENGINE := v8
 
 # FM Radio
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
-# Should be bcm2049, but hardware is not yet supported
 BOARD_FM_DEVICE := bcm4325
 #BOARD_USE_BROADCOM_FM_VOLUME_HACK := true
-HAS_BCM20780 := true
-BOARD_GLOBAL_CFLAGS += -DHAS_BCM20780
