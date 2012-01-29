@@ -1,9 +1,3 @@
-Please please it in AOSP or Cyanogenmod dir.
-If you want to build it.
-cp -r device/ /path/to/your/android/source/
-cd /path/to/your/android/source/
-. build/envsetup.sh
-lunch full_callisto-userdebug
-make -j 8
-From GT-I5510_Platfrom works only ar600*( wifi driver) with android gingerbread. 
-Please during build copy kernel from device/samsung/callisto/kernel to out/target/product/callisto/ I will fix this problem later.
+CyanogenMod device configuration for the Samsung Galaxy 551 (GT-I5510)
+
+By psyke83 and WillingMagic
