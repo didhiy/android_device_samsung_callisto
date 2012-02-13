@@ -46,7 +46,6 @@ int UsbController::stopRNDIS() {
 	return enableRNDIS(false);
 }
 
-
 int UsbController::enableRNDIS(bool enable) {
 	char ums;
 	int fdums = open("/sys/devices/platform/msm_hsusb/gadget/lun0/file", O_RDWR);
@@ -64,9 +63,9 @@ int UsbController::enableRNDIS(bool enable) {
 }
 
 bool UsbController::isRNDISStarted() {
-    char value[5];
-    int fd = open("/sys/module/g_android/parameters/product_id", O_RDONLY);
-    read(fd, &value, 5);
+    char value[1];
+    int fd = open("/sys/devices/platform/android_usb/functions/rndis", O_RDONLY);
+    read(fd, &value, 1);
     close(fd);
-    return (!strncmp(value,"6881",4) ? true : false);
+    return (!strncmp(value,"1",1) ? true : false);
 }

@@ -110,20 +110,6 @@
         <item>255</item>
     </integer-array>
 
-        <!-- Flag indicating whether the keyguard should be bypassed when
-         the slider is open.  This can be set or unset depending how easily
-         the slider can be opened (for example, in a pocket or purse). -->
-    <bool name="config_bypass_keyguard_if_slider_open">false</bool>
-    
-    <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
-         Software implementation will be used if config_hardware_auto_brightness_available is not set -->
-    <bool name="config_automatic_brightness_available">true</bool>
-    
-    <!-- XXXXXX END OF RESOURCES USING WRONG NAMING CONVENTION -->
-
-    <!-- The number of degrees to rotate the display when the keyboard is open. -->
-    <integer name="config_lidOpenRotation">90</integer>
-    
     <!-- Component name of the service providing network location support. -->
     <string name="config_networkLocationProvider">com.google.android.location.NetworkLocationProvider</string>
 

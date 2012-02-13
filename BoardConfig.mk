@@ -22,8 +22,13 @@ USE_CAMERA_STUB := false
 # inherit from the proprietary version
 -include vendor/samsung/callisto/BoardConfigVendor.mk
 
+#
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/callisto/include
+
 # Camera
 #BOARD_USE_FROYO_LIBCAMERA := true
+BOARD_CAMERA_USE_GETBUFFERINFO := true
+BOARD_USE_CAF_LIBCAMERA := true
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
@@ -131,5 +136,5 @@ JS_ENGINE := v8
 # FM Radio
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
-BOARD_FM_DEVICE := bcm4325
+BOARD_FM_DEVICE := bcm2049
 #BOARD_USE_BROADCOM_FM_VOLUME_HACK := true
